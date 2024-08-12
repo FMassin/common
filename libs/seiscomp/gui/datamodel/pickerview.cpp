@@ -986,6 +986,10 @@ class PickerMarker : public RecordMarker {
 			if ( !_referencedPick->filterID().empty() )
 				text += QString("\nfilter: %1").arg(_referencedPick->filterID().c_str());
 			try {
+				double confidence = _referencedPick->time().confidenceLevel();
+				text += QString("\nconfidence: %1").arg(confidence);
+			}
+			catch ( ... ) {}
 				double baz = _referencedPick->backazimuth().value();
 				text += QString("\nbackazimuth: %1°").arg(baz);
 			}
